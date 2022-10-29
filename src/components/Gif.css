@@ -1,0 +1,23 @@
+.gif{
+    border: 1px solid #eee;
+    border-radius: 6px;
+    color:#fff;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 16px;
+    padding: 32px;
+}
+
+.gif h4{
+    margin: 0;
+}
+
+.gif img{
+    object-fit: contain;
+}
+
+i{
+    font-size: 80px;
+}
