@@ -1,24 +1,57 @@
 import React from 'react';
 import './App.css';
-import ListOfGif from './components/ListOfGif';
+
+import Home from './pages/Home/index';
+import Detail from './pages/Detail/index';
+import SearchResult from './pages/SearchResults/index';
+import StaticContext from './context/StaticContext';
+import { GifsContextProvider } from './context/GifsContext';
+
 import {Route, Link} from "wouter";
 
 function App() {
 
   return (
-    <div className="App">
-      <section className="App-content">
-        <h1>App</h1>
-        <Link to="/gif/formula1">Gifs de Formula1</Link>
-        <Link to="/gif/nba">Gifs de NBA</Link>
-        <Link to="/gif/mlb">Gifs de MLB</Link>
-        <Link to="/gif/ufc">Gifs de UFC</Link>
-        <Route 
-          component={ListOfGif}
-          path='/gif/:keyword'/>
-        {/* <button onClick={() => {setGifs(DIFFERENT_GIFS)}}>Cambiar Gifs</button> */}
-      </section>
-    </div>
+    // TODOS LOS ELEMENTOS QUE ESTAN DENTRO DEL PROVIDER
+    // TENDRAN ACCESO AL OBJETO MAGICO
+    <StaticContext.Provider  value={
+      {
+        name: 'elianmtg', 
+        suscribeToChannel: true
+      }
+    }>
+      <div className="App">
+        <section className="App-content">
+
+          <Link to="/">
+            <img className="app-logo" src="" alt="Giffy Logo"/>
+          </Link>
+
+    {/* 
+    TODO LO QUE ESTA DENTRO DE NUESTRAS RUTAS TENDRA ACCESO
+     EN EL PROVIDER
+    */}
+          <GifsContextProvider>
+
+            <Route 
+              component={Home}
+              path="/"
+            />
+            
+            <Route 
+              component={SearchResult}
+              path='/search/:keyword'
+            />
+            <Route 
+              component={Detail}
+              path='/gif/:id'
+            />
+
+          </GifsContextProvider>
+
+        </section>
+      </div>
+    </StaticContext.Provider>
   );
 }
 
