@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import {Link, useLocation} from "wouter";
-import ListOfGif from '../../components/ListOfGifs';
-import { useGifs } from '../../hooks/useGifs';
+import ListOfGif from 'components/ListOfGifs';
+import { useGifs } from 'hooks/useGifs';
+import TrendingSearches from 'components/TrendingSearches';
 
 const POPULAR_GIFS = ["Matrix", "Boxeo", "NBA", "MLB"]
 
@@ -44,8 +45,15 @@ export default function Home (){
                     )
                 }
             </ul>
-            <h3 className='app-title'>Ultima Busqueda</h3>
-            <ListOfGif gifs={gifs}/>
+            <div className='App-main'>
+                <div className='App-results'>
+                    <h3 className='app-title'>Ultima Busqueda</h3>
+                    <ListOfGif gifs={gifs}/>
+                </div>
+                <div className='App-category'>
+                    <TrendingSearches/>
+                </div>
+            </div>
         </>
     )
 }

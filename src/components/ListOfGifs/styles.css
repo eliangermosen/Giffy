@@ -2,6 +2,10 @@
     --results-columns: 2;
 }
 
+.listOfGifs{
+    min-height: 100vh;
+}
+
 .ListOfGifs {
     column-count: var(--results-columns);
     column-gap: .5em;

@@ -1,7 +1,7 @@
 import React from 'react';
-import Spinner from '../../components/Spinner'
-import ListOfGifs from '../../components/ListOfGifs'
-import {useGifs} from '../../hooks/useGifs';
+import Spinner from 'components/Spinner'
+import ListOfGifs from 'components/ListOfGifs'
+import {useGifs} from 'hooks/useGifs';
 
 export default function SearchResults ({ params }){
 
@@ -19,15 +19,22 @@ export default function SearchResults ({ params }){
             })
     },[keyword])
     */
-   const {loading, gifs} = useGifs({keyword})
+   const {loading, gifs, setPage} = useGifs({keyword})
+
+   const handleNextPage = () => setPage(prevPage => prevPage + 1)
 
     return(
         <>
             {
                 loading
                 ? <Spinner/>
-                : <ListOfGifs gifs={gifs}/>
+                : <>
+                    <h3>{decodeURI(keyword)}</h3>
+                    <ListOfGifs gifs={gifs}/>
+                </>
             }
+            <br/>
+            <button onClick={handleNextPage}>Get next Page</button>
         </>
         // <h1>Busqueda {params.keyword}</h1>
     )

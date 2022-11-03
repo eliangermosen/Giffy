@@ -1,4 +1,4 @@
-const apiKey = "QZcf6ZcGaWKhiKYXFRuTPWBOlc1TJdAz"
+import {API_KEY, API_URL} from './settings'
 
 const fromApiResponseToGifs = apiResponse => {
   const {data = []} = apiResponse
@@ -12,8 +12,10 @@ const fromApiResponseToGifs = apiResponse => {
   }
 }
 
-export default function getGifs ({ limit = 25, keyword = 'morty'} = {}) {//valor por defecto es un objeto vacio y si no llega nada sera morty
-  const apiURL= `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${keyword}&limit=${limit}&offset=0&rating=g&lang=en`
+export default function getGifs ({ limit = 25, keyword = 'morty', page = 0} = {}) {//valor por defecto es un objeto vacio y si no llega nada sera morty
+  //offset: cuantos resultados me tengo que saltar de los resultados que devolvera
+  //multiplicamos la pagina por el limite. limite es la cantidad de resultados que devolvera
+  const apiURL= `${API_URL}/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${page * limit}&rating=g&lang=en`
 
     return fetch(apiURL)
       .then(res => res.json())

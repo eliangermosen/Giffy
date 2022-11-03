@@ -1,6 +1,6 @@
 import React from 'react';
-import Gif from '../../components/Gif';
-import useGlobalGif from '../../hooks/useGlobalGifs';
+import Gif from 'components/Gif';
+import useGlobalGif from 'hooks/useGlobalGifs';
 
 export default function Deatil ({params}){
     // console.log(params.id);
