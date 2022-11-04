@@ -24,7 +24,7 @@ function App() {
         <section className="App-content">
 
           <Link to="/">
-            <img className="app-logo" src="" alt="Giffy Logo"/>
+            <img className="App-logo" src="/logo.png" alt="Giffy Logo"/>
           </Link>
 
     {/* 

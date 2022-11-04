@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import {Link, useLocation} from "wouter";
+import {useLocation} from "wouter";
 import ListOfGif from 'components/ListOfGifs';
 import { useGifs } from 'hooks/useGifs';
 import TrendingSearches from 'components/TrendingSearches';
 
-const POPULAR_GIFS = ["Matrix", "Boxeo", "NBA", "MLB"]
+// const POPULAR_GIFS = ["Matrix", "Boxeo", "NBA", "MLB"]
 
 export default function Home (){
 
@@ -33,7 +33,7 @@ export default function Home (){
                     onChange={handleChange}
                 />
             </form>
-            <h3 className='app-title'>Los Gifs mas populares</h3>
+            {/* <h3 className='app-title'>Los Gifs mas populares</h3>
             <ul>
                 {
                     POPULAR_GIFS.map((popularGif) =>
@@ -44,7 +44,7 @@ export default function Home (){
                         </li>
                     )
                 }
-            </ul>
+            </ul> */}
             <div className='App-main'>
                 <div className='App-results'>
                     <h3 className='app-title'>Ultima Busqueda</h3>
