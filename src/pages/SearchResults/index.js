@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useRef, useEffect, useCallback} from 'react';
 import Spinner from 'components/Spinner'
 import ListOfGifs from 'components/ListOfGifs'
 import {useGifs} from 'hooks/useGifs';
+import useNearScreen from 'hooks/useNearScreen';
+import debounce from 'just-debounce-it';
 
 export default function SearchResults ({ params }){
 
@@ -20,8 +22,28 @@ export default function SearchResults ({ params }){
     },[keyword])
     */
    const {loading, gifs, setPage} = useGifs({keyword})
+   const externalRef = useRef()
+   const {isNearScreen} = useNearScreen({
+        externalRef: loading ? null : externalRef, 
+        once: false
+    })
 
-   const handleNextPage = () => setPage(prevPage => prevPage + 1)
+   /* 
+   useCallback es una combinacion entre useref y useeffect.
+   guarda una funcion entre diferentes renderizados para que siempre sea la misma funcion
+   y acepta un array de dependencias para que se actualice cada vez que la dependencia cambie.
+   usecallback evita volver a crear la misma funcion entre renderizado asi no se pierde la referencia
+   */
+
+   //el paquete debounce hace posible tomar un valor de una funcion que se ejecute varias veces en un tiempo establecido
+   const debounceHandleNextPage = useCallback(debounce(
+        () => setPage(prevPage => prevPage + 1), 1500
+    ),[])//solo cuando se renderiza por rpimera vez el componente
+
+   useEffect(function () {
+    console.log(isNearScreen)
+    if(isNearScreen) debounceHandleNextPage()
+   },[isNearScreen, debounceHandleNextPage])
 
     return(
         <>
@@ -31,10 +53,9 @@ export default function SearchResults ({ params }){
                 : <>
                     <h3>{decodeURI(keyword)}</h3>
                     <ListOfGifs gifs={gifs}/>
+                    <div id='visor' ref={externalRef}></div>
                 </>
             }
-            <br/>
-            <button onClick={handleNextPage}>Get next Page</button>
         </>
         // <h1>Busqueda {params.keyword}</h1>
     )

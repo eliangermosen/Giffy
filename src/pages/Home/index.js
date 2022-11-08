@@ -27,6 +27,7 @@ export default function Home (){
     return(
         <>
             <form action="" onSubmit={handleSubmit}>
+                <button>Buscar</button>
                 <input 
                     placeholder='Search a Gif here...'
                     type="text" value={keyword}

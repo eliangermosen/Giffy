@@ -29,6 +29,9 @@ a{
   padding: 20px 0;
   width: 144px;
 }
+.App-logo:hover {
+  cursor: pointer;
+}
 
 .App-logo img {
   object-fit: cover;

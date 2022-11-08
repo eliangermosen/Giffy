@@ -1,11 +1,13 @@
 import{ useState, useEffect, useRef } from 'react'
 
-export default function useNearScreen({ distance = '100px' } = {}){
+export default function useNearScreen({ distance = '100px', externalRef, once = true} = {}){
     const [isNearScreen, setIsNearScreen] = useState(false)
     const fromRef = useRef()
 
     useEffect(function () {
         let observer;
+
+        const element = externalRef ? externalRef.current :  fromRef.current
 
         const onChange = (entries, observer) => {
             // console.log(entries)
@@ -13,7 +15,9 @@ export default function useNearScreen({ distance = '100px' } = {}){
             // console.log(el)
             if(el.isIntersecting){
                 setIsNearScreen(true)
-                observer.disconnect()
+                once && observer.disconnect()
+            }else{
+                !once && setIsNearScreen(false)
             }
         }
 
@@ -32,7 +36,7 @@ export default function useNearScreen({ distance = '100px' } = {}){
             /* nativo
             observer.observe(document.getElementById('LazyTrending')) */
             // virtual dom
-            observer.observe(fromRef.current)
+            if(element) observer.observe(element)
 
             return () => observer && observer.disconnect()
             // cuando el componente se deje de utilizar ejecutara este metodo para que pase cuando no este disponible 
