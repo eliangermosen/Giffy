@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'wouter'
 import './Gif.css'
 
-export default function Gif({title,id,url}) {
+function Gif({title,id,url}) {
     return (
         <div className='gif'>
             <Link to={`/gif/${id}`} className='gif-link'>
@@ -12,3 +12,7 @@ export default function Gif({title,id,url}) {
         </div>
     )
 }
+/* permitira que solo se rendericen los que se agregan */
+export default React.memo(Gif, (prevProps, nextProps) => {
+    return prevProps.id === nextProps.id
+})

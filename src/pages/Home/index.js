@@ -1,39 +1,42 @@
-import React, { useState } from 'react';
+import React, { useCallback } from 'react';
 import {useLocation} from "wouter";
 import ListOfGif from 'components/ListOfGifs';
 import { useGifs } from 'hooks/useGifs';
 import TrendingSearches from 'components/TrendingSearches';
+import SearchForm from 'components/SearchForm';
 
 // const POPULAR_GIFS = ["Matrix", "Boxeo", "NBA", "MLB"]
 
 export default function Home (){
 
-    const [keyword, setKeyword] = useState('')
     const [path, pushLocation] = useLocation()
 
     const {loading,gifs}  = useGifs()
 
-    const handleSubmit = evt => {
-        evt.preventDefault()
+    /* 
+    para evitar que cada vez que se renderiza home
+    cambie el valor de handleSubmit se utiliza useCallback.
+    cada vez que cambie el pushlocation ejecuta la funcion
+    */
+    const handleSubmit = useCallback(({keyword}) => {
         //navegar a otra ruta
         pushLocation(`/search/${keyword}`)
-        console.log(keyword)
-    }
-    
-    const handleChange = evt => {
-        setKeyword(evt.target.value)
-    }
+        //console.log(keyword)
+    },[pushLocation])
+
+    /* useMemo: memoriza una variable. no es recomendado utilizarlo
+    se parece al useCallback pero guarda un valor.
+
+    const element = useMemo(() => <SearchForm onSubmit={handleSubmit}></SearchForm>, [handleSubmit])
+    */
+
 
     return(
         <>
-            <form action="" onSubmit={handleSubmit}>
-                <button>Buscar</button>
-                <input 
-                    placeholder='Search a Gif here...'
-                    type="text" value={keyword}
-                    onChange={handleChange}
-                />
-            </form>
+            {/* el componente recibe una prop y mediante 
+                ella le paso el metodo handleSubmit
+            */}
+            <SearchForm onSubmit={handleSubmit}></SearchForm>
             {/* <h3 className='app-title'>Los Gifs mas populares</h3>
             <ul>
                 {
