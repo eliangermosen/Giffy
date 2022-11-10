@@ -1,6 +1,10 @@
 import React from 'react';
 import Gif from 'components/Gif';
-import useGlobalGif from 'hooks/useGlobalGifs';
+import useSingleGif from 'hooks/useSingleGif';
+import Spinner from 'components/Spinner';
+import { Redirect } from 'wouter';
+// import useSEO from 'hooks/useSEO';
+import { Helmet } from "react-helmet";
 
 export default function Deatil ({params}){
     // console.log(params.id);
@@ -14,14 +18,32 @@ export default function Deatil ({params}){
     // const {gifs} = useContext(GifsContext);
     // console.log({gifs});
 
-    const gifs = useGlobalGif();
+    const {gif, isLoading, isError} = useSingleGif({id: params.id})
 
-    // busca dentro del arreglo el gif especificado por id
+    /* const gifs = useGlobalGif();
+
+    busca dentro del arreglo el gif especificado por id
     const gif = gifs.find(singleGif => 
         singleGif.id === params.id
-    )
+    ) */
 
-    console.log(gif)
+    /* const title = gif ? gif.title : ''
+    useSEO({description: `Detail of ${title}`, title})//({title: 'prueba'}) parametro nombrado */
+
+    const title = gif ? gif.title : ''
+    
+    if(isLoading) {
+        return (
+            <>
+                <Helmet>
+                    <title>Cargando...</title>
+                </Helmet>
+                <Spinner/>
+            </>
+        )
+    }
+    if(isError) return <Redirect to='/404'/>
+    if(!gif) return null
 
     /*
     si se refresca el navegador no aparecera debido a que
@@ -29,6 +51,11 @@ export default function Deatil ({params}){
     se podria guardar en local storage, volver a llamar para que la busque al api
     */
     return(
-        <Gif {...gif}/>
+        <>
+            <Helmet>
+                <title>{title} | Giffy</title>
+            </Helmet>
+            <Gif {...gif}/>
+        </>
     )
 }

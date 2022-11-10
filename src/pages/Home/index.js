@@ -4,6 +4,7 @@ import ListOfGif from 'components/ListOfGifs';
 import { useGifs } from 'hooks/useGifs';
 import TrendingSearches from 'components/TrendingSearches';
 import SearchForm from 'components/SearchForm';
+import { Helmet } from "react-helmet";
 
 // const POPULAR_GIFS = ["Matrix", "Boxeo", "NBA", "MLB"]
 
@@ -33,6 +34,9 @@ export default function Home (){
 
     return(
         <>
+        <Helmet>
+            <title>Home | Giffy</title>
+        </Helmet>
             {/* el componente recibe una prop y mediante 
                 ella le paso el metodo handleSubmit
             */}
