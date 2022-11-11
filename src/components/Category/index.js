@@ -10,7 +10,7 @@ export default function Category({name, options = [] }) {
             <h3 className="Category-title">{name}</h3>
             <ul className="Category-list">
                 {options.map((singleOption) => (
-                    <li key={singleOption.id}>
+                    <li key={singleOption.id} className="Category-list-item">
                         <Link to={`/search/${singleOption.id}`} className='Category-link'>
                             {singleOption.title}
                         </Link>

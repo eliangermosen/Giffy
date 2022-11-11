@@ -10,9 +10,9 @@ import { Helmet } from "react-helmet";
 
 export default function Home (){
 
-    const [path, pushLocation] = useLocation()
+    const [_, pushLocation] = useLocation()
 
-    const {loading,gifs}  = useGifs()
+    const {gifs}  = useGifs()
 
     /* 
     para evitar que cada vez que se renderiza home
@@ -34,13 +34,13 @@ export default function Home (){
 
     return(
         <>
-        <Helmet>
-            <title>Home | Giffy</title>
-        </Helmet>
+            <Helmet>
+                <title>Home | Giffy</title>
+            </Helmet>
             {/* el componente recibe una prop y mediante 
                 ella le paso el metodo handleSubmit
             */}
-            <SearchForm onSubmit={handleSubmit}></SearchForm>
+            {/* <SearchForm onSubmit={handleSubmit}></SearchForm> */}
             {/* <h3 className='app-title'>Los Gifs mas populares</h3>
             <ul>
                 {
@@ -53,13 +53,18 @@ export default function Home (){
                     )
                 }
             </ul> */}
-            <div className='App-main'>
-                <div className='App-results'>
-                    <h3 className='app-title'>Ultima Busqueda</h3>
-                    <ListOfGif gifs={gifs}/>
+            <header className="o-header">
+                <SearchForm onSubmit={handleSubmit} />
+            </header>
+            <div className="App-wrapper">
+                <div className="App-main">
+                <div className="App-results">
+                    <h3 className="App-title">Última búsqueda</h3>
+                    <ListOfGif gifs={gifs} />
                 </div>
-                <div className='App-category'>
-                    <TrendingSearches/>
+                <div className="App-category">
+                    <TrendingSearches />
+                </div>
                 </div>
             </div>
         </>

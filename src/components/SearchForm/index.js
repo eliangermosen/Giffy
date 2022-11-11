@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import css from './SearchForm.module.css'
 
 function SearchForm({onSubmit}){//recibe la prop que en este caso sera un metodo
     const [keyword, setKeyword] = useState('')
@@ -14,9 +15,10 @@ function SearchForm({onSubmit}){//recibe la prop que en este caso sera un metodo
     }
     return(
         // cuando envie el form llama el motodo handleSubmit
-        <form action="" onSubmit={handleSubmit}>
-            <button>Buscar</button>
+        <form action="" onSubmit={handleSubmit} className={css["c-search"]}>
+            <button className={css["c-search-btn"]}>Buscar</button>
             <input 
+                className={css["c-search-input"]}
                 placeholder='Search a Gif here...'
                 type="text" value={keyword}
                 onChange={handleChange}

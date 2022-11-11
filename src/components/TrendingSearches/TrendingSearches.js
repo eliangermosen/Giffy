@@ -6,7 +6,13 @@ export default function TrendingSearches () {
     const [trends, setTrends] = useState([])
 
     useEffect(function (){
-        getTrendingTerms().then(setTrends)
+        // getTrendingTerms().then(setTrends)
+        const controller = new AbortController()
+        getTrendingTerms({signal: controller.signal})
+            .then(setTrends)
+            .catch(err => {})
+
+        return () => controller.abort()
     }, [])
 
     return <Category
