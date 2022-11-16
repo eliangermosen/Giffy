@@ -12,10 +12,10 @@ const fromApiResponseToGifs = apiResponse => {
   }
 }
 
-export default function getGifs ({limit = 15, keyword = 'morty', page = 0} = {}) {//valor por defecto es un objeto vacio y si no llega nada sera morty
+export default function getGifs ({limit = 15, keyword = 'morty', page = 0, rating='g'} = {}) {//valor por defecto es un objeto vacio y si no llega nada sera morty
   //offset: cuantos resultados me tengo que saltar de los resultados que devolvera
   //multiplicamos la pagina por el limite. limite es la cantidad de resultados que devolvera
-  const apiURL= `${API_URL}/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${page * limit}&rating=g&lang=en`
+  const apiURL= `${API_URL}/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${page * limit}&rating=${rating}&lang=en`
 
     return fetch(apiURL)
       .then(res => res.json())

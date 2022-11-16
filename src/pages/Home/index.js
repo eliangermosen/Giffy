@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import {useLocation} from "wouter";
 import ListOfGif from 'components/ListOfGifs';
 import { useGifs } from 'hooks/useGifs';
@@ -10,7 +10,7 @@ import { Helmet } from "react-helmet";
 
 export default function Home (){
 
-    const [_, pushLocation] = useLocation()
+    // const [_, pushLocation] = useLocation()
 
     const {gifs}  = useGifs()
 
@@ -19,11 +19,11 @@ export default function Home (){
     cambie el valor de handleSubmit se utiliza useCallback.
     cada vez que cambie el pushlocation ejecuta la funcion
     */
-    const handleSubmit = useCallback(({keyword}) => {
+    /* const handleSubmit = useCallback(({keyword}) => {
         //navegar a otra ruta
         pushLocation(`/search/${keyword}`)
         //console.log(keyword)
-    },[pushLocation])
+    },[pushLocation]) */
 
     /* useMemo: memoriza una variable. no es recomendado utilizarlo
     se parece al useCallback pero guarda un valor.
@@ -54,7 +54,7 @@ export default function Home (){
                 }
             </ul> */}
             <header className="o-header">
-                <SearchForm onSubmit={handleSubmit} />
+                <SearchForm/>
             </header>
             <div className="App-wrapper">
                 <div className="App-main">

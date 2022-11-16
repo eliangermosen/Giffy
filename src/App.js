@@ -43,7 +43,7 @@ function App() {
             
             <Route 
               component={SearchResult}
-              path='/search/:keyword'
+              path='/search/:keyword/:rating?'
             />
             <Route 
               component={Detail}
