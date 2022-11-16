@@ -22,7 +22,7 @@ function SearchForm({ initialKeyword = '', initialRating = 'g'}){
     })
     */
 
-    const { keyword, times, rating, updateKeyword, updateRating } = useForm({ 
+    const { keyword, rating, updateKeyword, updateRating } = useForm({ 
         initialKeyword, 
         initialRating 
     })
@@ -61,7 +61,6 @@ function SearchForm({ initialKeyword = '', initialRating = 'g'}){
                     <option key={rating}>{rating}</option>
                 ))}
             </select>
-            <small>{times}</small>
         </form>
     )
 }

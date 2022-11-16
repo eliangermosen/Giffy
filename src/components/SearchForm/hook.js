@@ -44,20 +44,19 @@ export default function useForm ({
     initialKeyword = '', 
     initialRating = 'g' 
 } = {}) {
-    const [state, dispatch] = useReducer(REDUCER, {
+    const [{keyword, rating}, dispatch] = useReducer(REDUCER, {
         keyword: decodeURIComponent(initialKeyword),
-        rating: initialRating,
-        times: 0
+        rating: initialRating
     })
 
-    const { keyword, times, rating } = state
+    // const { keyword, rating } = state
 
-    return { keyword, 
-        times, 
-        rating, 
-        updateKeyword: keyword => 
+    return { 
+        keyword, 
+        rating,
+        updateKeyword: ({keyword}) => 
             dispatch({type: ACTIONS.UPDATE_KEYWORD, payload: keyword}),
-        updateRating: rating => 
+        updateRating: ({rating}) => 
             dispatch({type: ACTIONS.UPDATE_RATING, payload: rating})
     }
 }
