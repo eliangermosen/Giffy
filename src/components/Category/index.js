@@ -11,7 +11,7 @@ export default function Category({name, options = [] }) {
             <ul className="Category-list">
                 {options.map((singleOption) => (
                     <li key={singleOption.id} className="Category-list-item">
-                        <Link to={`/search/${singleOption.id}`} className='Category-link'>
+                        <Link to={`/gif/${singleOption.id}`} className='Category-link'>
                             {singleOption.title}
                         </Link>
                     </li>
