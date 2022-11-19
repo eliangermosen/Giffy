@@ -1,4 +1,4 @@
-.Category-title {
+/* .Category-title {
     color: var(--theme-body-txt);
     font-weight: bold;
     margin-bottom: 0.7rem;
@@ -26,9 +26,9 @@
     text-decoration: none;
     padding: 0.5em;
     transition: color ease-in 0.1s;
-}
+} */
 
-@media screen and (min-width: 55rem) {
+/* @media screen and (min-width: 55rem) {
     .Category-title {
         text-align: right;
     }
@@ -42,9 +42,9 @@
         margin-right: 0.5em;
         font-size: 1em;
     }
-}
+} */
 
-.Category-list-item:nth-child(5n + 1) {
+/* .Category-list-item:nth-child(5n + 1) {
     background-color: var(--brand-color_1);
     color: var(--theme-body-bg);
 }
@@ -67,4 +67,4 @@
 .Category-list-item:nth-child(5n + 5) {
     background-color: var(--brand-color_5);
     color: var(--theme-body-bg);
-}
+} */

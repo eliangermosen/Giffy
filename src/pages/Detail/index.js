@@ -55,6 +55,7 @@ export default function Deatil ({params}){
             <Helmet>
                 <title>{title} | Giffy</title>
             </Helmet>
+            <h3 className="App-title">{gif.title}</h3>
             <Gif {...gif}/>
         </>
     )
