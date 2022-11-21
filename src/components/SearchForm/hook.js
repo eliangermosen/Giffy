@@ -52,11 +52,11 @@ export default function useForm ({
     // const { keyword, rating } = state
 
     return { 
-        keyword, 
-        rating,
         updateKeyword: ({keyword}) => 
             dispatch({type: ACTIONS.UPDATE_KEYWORD, payload: keyword}),
         updateRating: ({rating}) => 
-            dispatch({type: ACTIONS.UPDATE_RATING, payload: rating})
+            dispatch({type: ACTIONS.UPDATE_RATING, payload: rating}),
+        keyword, 
+        rating
     }
 }

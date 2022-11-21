@@ -6,7 +6,7 @@ import Button from 'components/Button';
 
 const RATINGS = ['g','pg','pg-13','r']
 
-function SearchForm({ initialKeyword = '', initialRating = 'g'}){
+function SearchForm({ initialKeyword = '', initialRating =  RATINGS[0]}){
     //const [keyword, setKeyword] = useState(decodeURIComponent(initialKeyword))
     //const [rating, setRating] = useState(initialRating)
     //const [times, setTimes] = useState(0)
@@ -30,19 +30,26 @@ function SearchForm({ initialKeyword = '', initialRating = 'g'}){
 
     const [_, pushLocation] = useLocation()
 
+     const onSubmit = ({ keyword }) => {
+        if (keyword !== '') {
+            // navegar a otra ruta
+            pushLocation(`/search/${keyword}/${rating}`)
+        }
+    }
+
     const handleSubmit = evt => {
         evt.preventDefault()
         //navegar a otra ruta
-        pushLocation(`/search/${keyword}/${rating}`)
+        onSubmit({ keyword })
     }
 
     const handleChange = (evt) => {
-        updateKeyword(evt.target.value)
+        updateKeyword({ keyword: evt.target.value })
         // dispatch({type: ACTIONS.UPDATE_KEYWORD, payload: evt.target.value})
     }
     
     const handleChangeRating = (evt) => {
-        updateRating(evt.target.value)
+        updateRating({ rating: evt.target.value })
         // dispatch({type: ACTIONS.UPDATE_RATING, payload: evt.target.value})
     }
 

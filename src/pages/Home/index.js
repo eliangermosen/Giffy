@@ -1,5 +1,4 @@
 import React from 'react';
-import {useLocation} from "wouter";
 import ListOfGif from 'components/ListOfGifs';
 import { useGifs } from 'hooks/useGifs';
 import TrendingSearches from 'components/TrendingSearches';
