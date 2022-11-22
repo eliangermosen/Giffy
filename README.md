@@ -12,6 +12,7 @@ Este proyecto trata sobre un buscador de Gifs, lo realize conjuntamente con el c
 - Wouter para las rutas.
 - Style Components.
 - CSS.
+- Test con React testing library y React hook testing library.
 
 ## API:
 
