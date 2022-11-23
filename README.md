@@ -1,6 +1,6 @@
 # Giffy
 
-Este proyecto trata sobre un buscador de Gifs, lo realize conjuntamente con el curso de [@midudev](https://github.com/midudev). Con este curso puede crecer grandemente en mis conocimientos de como trabajar con buenas practicas en React. 
+Este proyecto trata sobre un buscador de Gifs, lo realize conjuntamente con el curso de [@midudev](https://github.com/midudev). Con este curso pude crecer grandemente en mis conocimientos de como trabajar con buenas practicas en React. 
 
 ## Características:
 
@@ -18,4 +18,4 @@ Este proyecto trata sobre un buscador de Gifs, lo realize conjuntamente con el c
 
 Utilice la API de GIPHY. [Doc](https://developers.giphy.com/docs/api/endpoint/).
 
-Puedes ver el demo que esta desplegado con Netlify en el aiguente enclce 👉 [Click](https://giffy-elian.netlify.app/) 👈
+Puedes ver el demo que esta desplegado con Netlify en el siguiente enlace 👉 [Click](https://giffy-elian.netlify.app/) 👈
